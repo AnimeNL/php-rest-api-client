@@ -2,10 +2,10 @@
 
 namespace AnimeCon\Api\Client\Handler;
 
-use Animecon\Api\Client\Provider\TokenProvider;
+use AnimeCon\Api\Client\Provider\TokenProvider;
 use Psr\Http\Message\RequestInterface;
 
-class AuthHandlder
+class AuthHandler
 {
     private TokenProvider $tokenProvider;
 

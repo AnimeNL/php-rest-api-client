@@ -1,12 +1,12 @@
 <?php
 
-namespace Animecon\Api\Client\Builder;
+namespace AnimeCon\Api\Client\Provider;
 
 use AnimeCon\Api\Client\Context\AuthenticationContext;
 use GuzzleHttp\Client;
 use Psr\Cache\CacheItemPoolInterface;
 
-class AuthMiddleware
+class TokenProvider
 {
     private const ACCESS_TOKEN = 'access_token';
     private Client $client;
@@ -23,12 +23,7 @@ class AuthMiddleware
         $this->authenticationContext = $authenticationContext;
     }
 
-    public function authenticate()
-    {
-        
-    }
-
-    private function getToken()
+    public function getToken(): string
     {
         $item = $this->cache->getItem(self::ACCESS_TOKEN);
         if ($item->isHit()) {
@@ -42,7 +37,10 @@ class AuthMiddleware
     {
         $response = $this->client->post(
             $this->authenticationContext->getUri(),
-            ['params' => $this->authenticationContext->getParams()]
+            [
+                'form_params' => $this->authenticationContext->getParams(),
+                'headers'     => ['Accept' => '*/*'],
+            ]
         );
 
         $tokens = json_decode((string)$response->getBody(), true, 512, JSON_THROW_ON_ERROR);
