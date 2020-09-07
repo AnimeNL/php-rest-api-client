@@ -34,6 +34,11 @@ class AuthenticationContext
         return $instance;
     }
 
+    public function setScopes(array $scopes): void
+    {
+        $this->scopes = $scopes;
+    }
+
     public function getUri(): string
     {
         return $this->uri;

@@ -9,7 +9,7 @@
         "sort-packages": true
     },
     "require": {
-        "guzzlehttp/guzzle": "^7.1@dev",
+        "guzzlehttp/guzzle": "^7.0",
         "psr/cache": "^1.0@dev",
         "symfony/cache": "^5.2@dev"
     },

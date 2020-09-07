@@ -17,6 +17,12 @@ class AnimeConClientTest extends TestCase
         self::assertIsArray($events);
     }
 
+    public function testGetEventsForYear()
+    {
+        $events = $this->client->getEventsForYear(2017);
+        self::assertIsArray($events);
+    }
+
     public function setUp(): void
     {
         $authenticationContext = new AuthenticationContext(

@@ -35,10 +35,11 @@ class TokenProvider
 
     private function initTokens(): string
     {
+        $params = $this->authenticationContext->getParams();
         $response = $this->client->post(
             $this->authenticationContext->getUri(),
             [
-                'form_params' => $this->authenticationContext->getParams(),
+                'form_params' => $params,
                 'headers'     => ['Accept' => '*/*'],
             ]
         );
