@@ -15,14 +15,14 @@ class AnimeConClient
 
     public function getEvents(): array
     {
-        $response = $this->guzzle->get('/activities.json');
+        $response = $this->guzzle->get('activities.json');
 
         return json_decode((string)$response->getBody(), true, 512, JSON_THROW_ON_ERROR);
     }
 
     public function getEventsForYear(string $year): array
     {
-        $response = $this->guzzle->get('/activities.json', ['query' => ['year' => $year]]);
+        $response = $this->guzzle->get('activities.json', ['query' => ['year' => $year]]);
 
         return json_decode((string)$response->getBody(), true, 512, JSON_THROW_ON_ERROR);
     }
